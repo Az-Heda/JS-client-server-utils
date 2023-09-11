@@ -7,6 +7,7 @@
 	- [Download file from url](#download-function)
 	- [WebServer](#webserver)
 	- [MySurreal](#mysurreal)
+	- [CheckTime](#checktime)
 - [Client-Side](#client)
 	- [Installation](#installation)
 	- [myStorage](#class-mystorage)
@@ -52,7 +53,7 @@ This function will download a file from a url and save it with a specific filena
 ```js
 const server = new azhedautils.WebServer({
 	host: 'localhost',
-	port: 7788
+  port: 7788
 });
 ```
 This function will start a webserver, the default command are limited.
@@ -87,6 +88,21 @@ await mysur.delete('person:toby');
 await mysur.live('person');
 await mysur.kill('<surreal query uuid>');
 await mysur.close();
+```
+
+## CheckTime
+
+Once you've asign the new instance of the class to a variable, you just need to call .set() to save the current time
+```js
+const chTime = new azhedautils.CheckTime();
+
+(async () => {
+	chTime.set();
+	await azhedautils.sleep(4 * 1000) // 4 Seconds written in milliseconds
+	console.log(chTime.set()+'ms');
+	>>> 4004ms
+})();
+
 ```
 
 # Client
