@@ -54,6 +54,110 @@ const myStorage = {
 	}
 }
 
+class Loader {
+	/**
+	 * Methods:
+	 * * loader.append()
+	 * * loader.remove()
+	 * @param {String} theme Light OR Dark
+	 */
+    constructor(theme='dark') {
+		this.theme = (['light', 'dark'].includes(theme)) ? theme : 'dark';
+		this.themeColors = {
+			'light': {
+				border: 'black',
+				background: 'rgba(0, 0, 0, 0.25)',
+			},
+			'dark': {
+				border: 'white',
+				background: 'rgba(255, 255, 255, 0.25)',
+			},
+		}
+		this.className = `cube-${Date.now()}`;
+        this.loader = document.createElement('div');
+        this.loader.classList.add(this.className);
+        this.#_styleLoader();
+        this.sides = [];
+        for (let pos = 0; pos < 6; pos ++) {
+            let side = document.createElement('div');
+            side.setAttribute('class', 'side');
+            this.sides.push(side);
+        }
+        this.sides.forEach((s) => {
+            this.loader.appendChild(s);
+        })
+    }
+
+    #_styleLoader() {
+		const exists = (document.getElementById('azheda-loader-style') !== null)
+		let css = (exists)
+					? document.getElementById('azheda-loader-style')
+					: document.createElement('style');
+		css.setAttribute('id', 'azheda-loader-style');
+		css.innerHTML = `
+		/* Animation for Theme: ${this.theme} */
+		@keyframes AzHedaCubeAnimation {
+			0% { transform: rotate(45deg) rotateX(-25deg) rotateY(25deg); }
+			50% { transform: rotate(45deg) rotateX(-385deg) rotateY(25deg); }
+			100% { transform: rotate(45deg) rotateX(-385deg) rotateY(385deg); }
+		}
+		  
+		.${this.className} {
+			animation: AzHedaCubeAnimation 2s infinite ease;
+			transform-style: preserve-3d;
+			height: 40px;
+			width: 40px;
+		}
+		
+		.${this.className} div {
+			background-color: ${this.themeColors[this.theme].background};
+			height: 100%;
+			position: absolute;
+			width: 100%;
+			border: 2px solid ${this.themeColors[this.theme].border};
+		}
+		
+		.${this.className} div:nth-of-type(1) { transform: translateZ(-20px) rotateY(180deg); }
+		.${this.className} div:nth-of-type(2) { transform: rotateY(-270deg) translateX(50%); transform-origin: top right; }
+		.${this.className} div:nth-of-type(3) { transform: rotateY(270deg) translateX(-50%); transform-origin: center left; }
+		.${this.className} div:nth-of-type(4) { transform: rotateX(90deg) translateY(-50%); transform-origin: top center; }
+		.${this.className} div:nth-of-type(5) { transform: rotateX(-90deg) translateY(50%); transform-origin: bottom center; }
+		.${this.className} div:nth-of-type(6) { transform: translateZ(20px); }`;
+		
+		
+        let styles = {
+			'position': 'fixed',
+			'top': '50%',
+			'left': '50%',
+			'z-index': '1', 
+        };
+        let keys = Object.keys(styles);
+        let values = keys.map((item) => { return `${item}: ${styles[item]}` }).join('; ');
+        this.loader.setAttribute('style', values);
+		if (!exists) {
+			document.body.appendChild(css);
+		}
+    }
+	/**
+	 * Show loader
+	 */
+    append() {
+        if (this.loader !== null) {
+            let body = document.getElementsByTagName('body')[0];
+            body.appendChild(this.loader);
+        }
+        else {
+            throw new Error(`Loader not found`);
+        }
+    }
+
+	/**
+	 * Remove loader
+	 */
+    remove() {
+        this.loader.remove();
+    }
+}
 
 /** number **/
 Number.prototype.map = function(start1, stop1, start2, stop2) {
