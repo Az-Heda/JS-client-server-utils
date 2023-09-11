@@ -1,6 +1,27 @@
 ## For node
 
-- [Server-Side](#for-node)
+
+
+| [Server-Side](#for-node)                     | [Client-Side](#client)                   |
+|:--------------------------------------------:|:----------------------------------------:|
+| [Installation](#install)                     | [Installation](#installation)            |
+| [Usage](#usage)                              | [myStorage](#class-mystorage)            |
+| [Sleep function](#sleep-function)            | [Loader](#class-loader)                  |
+| [Download file from url](#download-function) | [Number.map](#numbermap)                 |
+| [WebServer](#webserver)                      | [Number.getid](#numbergetid)             |
+| [MySurreal](#mysurreal)                      | [String.encodeAscii](#stringencodeascii) |
+| [CheckTime](#checktime)                      | [String.decodeAscii](#stringdecodeascii) |
+|                                              | [String.hashSeed](#stringhashseed)       |
+|                                              | [String.getid](#stringgetid)             |
+|                                              | [String.capitalize](#stringcapitalize)   |
+|                                              | [Array.copy](#arraycopy)                 |
+|                                              | [Array.randomize](#arrayrandomize)       |
+|                                              | [Array.sortByList](#arraysortbylist)     |
+|                                              | [Object.copy](#objectcopy)               |
+|                                              | [Object.sort](#objectsort)               |
+|                                              | [Object.getList](#objectgetlist)         |
+
+<!-- - [Server-Side](#for-node)
 	- [Installation](#install)
 	- [Usage](#usage)
 	- [Sleep function](#sleep-function)
@@ -24,7 +45,7 @@
 	- [Array.sortByList](#arraysortbylist)
 	- [Object.copy](#objectcopy)
 	- [Object.sort](#objectsort)
-	- [Object.getList](#objectgetlist)
+	- [Object.getList](#objectgetlist) -->
 
 
 ## Install
