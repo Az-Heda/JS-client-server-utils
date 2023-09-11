@@ -74,7 +74,7 @@ This function will download a file from a url and save it with a specific filena
 ```js
 const server = new azhedautils.WebServer({
 	host: 'localhost',
-  port: 7788
+	port: 7788
 });
 ```
 This function will start a webserver, the default command are limited.
