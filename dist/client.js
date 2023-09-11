@@ -1,3 +1,4 @@
+const myStorageDefaultExpr = 1000 * 60 * 60 * 24;
 const myStorage = {
 	add: function(key, value) {
 		if (typeof Storage !== undefined) {
@@ -32,7 +33,7 @@ const myStorage = {
 		return null;
 	},
 	localcookie: {
-		set: function(key, value, expr = 1000 * 60 * 60 * 24) {
+		set: function(key, value, expr = myStorageDefaultExpr) {
 			const now = new Date();
 			const item = { value: value, expiry: now.getTime() + expr };
 			window.localStorage.setItem(key, JSON.stringify(item));
@@ -51,6 +52,31 @@ const myStorage = {
 			}
 			return null;
 		}
+	}
+}
+
+class CheckTime {
+	constructor(start=false) {
+		this.t = (start) ? Date.now() : null;
+	}
+
+	set(show=false) {
+		if (this.t === null) {
+			this.t = Date.now();
+		}
+		else {
+			return this.#_calculate(this.t, Date.now(), show);
+		}
+		return null;
+	}
+
+	#_calculate(t1, t2, show=false) {
+		let diff = Math.abs(t1 - t2);
+		this.t = null;
+		if (show) {
+			console.log(new Date(diff).toISOString().substr(11, 12));
+		}
+		return diff;
 	}
 }
 
