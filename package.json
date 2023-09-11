@@ -1,6 +1,6 @@
 {
-  "name": "azhedautils",
-  "version": "1.0.4",
+  "name": "azheda-utils",
+  "version": "1.0.0",
   "main": "index.js",
   "keywords": [],
   "author": "AzHeda",
@@ -11,7 +11,7 @@
   },
   "repository": {
 	"type": "git",
-	"url": "git+https://github.com/Az-Heda/jsutils.git#readme"
+	"url": "git+https://github.com/Az-Heda/jsutils.git"
   },
   "homepage": "https://github.com/Az-Heda",
   "dependencies": {
